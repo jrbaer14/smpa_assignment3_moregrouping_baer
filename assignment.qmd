@@ -168,7 +168,7 @@ I filtered for just the representatives that voted yes, using the filter functio
 
 Of the districts that voted for impeachment how many had a rural population above 20%?
 
-I filtered for the districts that voted yes for impeachment and then grouped by rural population above 20%. I then used summarise function to count how many had rural populations above 20%. I found 23 districts with rural populations above 20% voted yes for impeachment.
+I filtered for the districts that voted yes for impeachment and then grouped by rural population above 20%. I then used summarise function to count how many had rural populations above 20%. I found 23 districts with rural populations above 20% voted yes for impeachment. 
 
 ```{r}
 
