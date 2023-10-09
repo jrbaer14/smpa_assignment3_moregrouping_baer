@@ -78,7 +78,7 @@ impeach %>%
 
 3)  Now do the same as #2, but this time instead of GDP, group by whether the district is above or below the national average for the percentage of college graduates. The column that captures this information is `pct_bachelors_compared_to_national`.
 
-I filtered just for the Democratic votes (using the filter == "D" function). I then split the data into 4 groups based on the for_impeachment and pct_bachelors_compared_to_national variables. 7 reps were against impeachment & had % above national avg. 19 reps were against impeachment and had % below national avg. 128 reps were in favor of impeachment and have % above national avg. 81 reps were in favor of impeachment and have % below national avg.
+I filtered just for the Democratic votes (using the filter == "D" function). I then split the data into 4 groups based on the for_impeachment and pct_bachelors_compared_to_national variables. 7 reps were against impeachment & had % above national avg. 19 reps were against impeachment and had % below national avg. 128 reps were in favor of impeachment and have % above national avg. 81 reps were in favor of impeachment and have % below national avg. 
 
 ```{r}
 
