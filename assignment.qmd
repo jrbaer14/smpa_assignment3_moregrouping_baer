@@ -102,9 +102,15 @@ Instead of counting how many districts are above/below the national average, thi
   
 In other words, you want to end up with the calculated mean for what that percentage is for the Yes districts and the No districts.
 
+Mean % with bachelor's degree in Districts that voted "No" is 27.65463%. Mean % with bachelor's degree in Districts that voted "Yes" is 33.68716%. 
+
+I determined this by grouping the for_impeachment variable and then using the summary function to calculate the mean percent bachelor's degree of all the districts that voted for and against impeachment.
+
 ```{r}
 
-
+impeach %>%
+  group_by(for_impeachment) %>%
+  summarise(avg_gradpct = mean(pct_bachelors))
 
 
 
@@ -117,9 +123,15 @@ In other words, you want to end up with the calculated mean for what that percen
 5)  Do the same as #4, but this time show the MEAN *percentage of the vote that Donald Trump received* for districts that are Yes for impeachment vs. No.  
 The relevant column for that is `trump_percent`.
 
+Of the districts that were against impeachment, Donald Trump received mean 43.82308 % of the vote.
+Of the districts that were in favor of impeachment, Trump received mean 32.03876% of the vote.
+
+I determined this by grouping the for_impeachment variable and then using the summary function to calculate the mean percentage that voted for Trump of all the districts that voted for and against impeachment.
 ```{r}
 
-
+impeach %>%
+  group_by(for_impeachment) %>%
+  summarise(avg_trumppct = mean(trump_percent))
 
 
 
@@ -132,7 +144,15 @@ The relevant column for that is `trump_percent`.
 
 6)  Filter out only the members who are a yes for impeachment. Then of those "Yes" member, how many won their 2018 election by less than 5 percentage points (`margin_flag_2018`) vs. more?
 
+17 members won by 5 percentage points or less. 192 won by more than 5 percentage points.
+
+I filtered for just the representatives that voted yes, using the filter function. I then grouped the data based on the margin_flag_2018 variable. I then used summarise function to tally up how many representatives were re-elected with margin 5 percentage points and lower, as well as above 5 percentage points.
 ```{r}
+
+ impeach %>%
+  filter(for_impeachment == "YES") %>%
+  group_by(margin_flag_2018) %>%
+  summarise(count = n())
 
   
 
@@ -146,9 +166,16 @@ The relevant column for that is `trump_percent`.
 
 7)  Come up with another breakdown of your choosing for how you'd like to examine this dataset. Say what you'll look at, and then put the code below to find the answer.
 
+Of the districts that voted for impeachment how many had a rural population above 20%?
+
+I filtered for the districts that voted yes for impeachment and then grouped by rural population above 20%. I then used summarise function to count how many had rural populations above 20%. I found 23 districts with rural populations above 20% voted yes for impeachment.
+
 ```{r}
 
-  
+  impeach %>%
+  filter(for_impeachment == "YES") %>%
+  group_by(rural_pop_above20pct) %>%
+  summarise(count = n())
 
 
 
