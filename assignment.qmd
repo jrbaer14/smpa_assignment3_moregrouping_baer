@@ -42,9 +42,13 @@ Write your code using grouping in the chunks below to help answer the following 
 
 1)  How many members in the dataset favor impeachment vs. not (using the `for_impeachment` column)?
 
+I grouped based by the for impeachment variable and then used the summarize function to tally up the yes and no votes. 209 members favor impeachment, 26 did not.
+
 ```{r}
 
-
+impeach %>%
+group_by(for_impeachment) %>%
+summarise( count = n ())
 
 
 
@@ -55,9 +59,13 @@ Write your code using grouping in the chunks below to help answer the following 
   
 You'll want to ensure you do the grouping on both columns together, e.g. `group_by(column1, column2)`
 
+I filtered just for the Democratic votes (using the filter == "D" function). I then split the data into 4 groups based on the for_impeachment and GDP_above_national variables. 7 reps were against impeachment & had GDP above national avg. 19 reps were against impeachment and had GDP below national avg. 126 reps were in favor of impeachment and have GDP above national avg. 83 reps were in favor of impeachment and have GDP below national avg.
 ```{r}
 
-
+impeach %>%
+  filter(party == "D") %>%
+  group_by(for_impeachment, gdp_above_national)%>%
+  summarise( count = n ())
 
 
 
@@ -70,9 +78,14 @@ You'll want to ensure you do the grouping on both columns together, e.g. `group_
 
 3)  Now do the same as #2, but this time instead of GDP, group by whether the district is above or below the national average for the percentage of college graduates. The column that captures this information is `pct_bachelors_compared_to_national`.
 
+I filtered just for the Democratic votes (using the filter == "D" function). I then split the data into 4 groups based on the for_impeachment and pct_bachelors_compared_to_national variables. 7 reps were against impeachment & had % above national avg. 19 reps were against impeachment and had % below national avg. 128 reps were in favor of impeachment and have % above national avg. 81 reps were in favor of impeachment and have % below national avg.
+
 ```{r}
 
-
+impeach %>%
+  filter(party == "D") %>%
+  group_by(for_impeachment, pct_bachelors_compared_to_national) %>%
+  summarise( count = n ())
 
 
 
